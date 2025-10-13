@@ -15,5 +15,8 @@ public class Main {
         newArray = assignment.findAllIntsBelowNumberInArray(new int[] {1,2,3,4,5,6,7,8,9}, 5);
 
 
+        assignment.printFirstSentence("In Java, strings are immutable, meaning their content cannot be changed after creation. To \"add\" a character to a string, a new string object is created with the desired modifications.".toCharArray());
+
+
     }
 }

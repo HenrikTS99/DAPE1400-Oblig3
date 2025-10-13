@@ -191,9 +191,7 @@ public class Assignment {
 
         if (string.charAt(0) == ' ') { return false; }
 
-        if (string.length() < 6 || string.length() > 60) { return false; }
-
-        return true;
+        return string.length() >= 6 && string.length() <= 60;
     }
 
 
@@ -213,11 +211,14 @@ public class Assignment {
      * Do not print in separate lines.
      */
     public void printFirstSentence(char[] chars) {
+        StringBuilder firstSentence = new StringBuilder();
         for (char c : chars) {
+            firstSentence.append(c);
             if (c == '.') {
-                return Arrays.copyOfRange(0, c+1).toString();
+                break;
             }
         }
+        System.out.println(firstSentence);
     }
     
     /**
@@ -226,6 +227,12 @@ public class Assignment {
      * But only if the String is not Corona (case insensitive).
      */
     public void printAllStringsNotCoronaCaseInsensitive(String[] strings){
+        for (String string : strings) {
+            if (string.equalsIgnoreCase("Corona")) {
+                continue;
+            }
+            System.out.println(string);
+        }
 
     }
 
