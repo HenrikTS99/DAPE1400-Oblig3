@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
 
     /**
@@ -8,5 +10,10 @@ public class Main {
 	    Assignment assignment = new Assignment();
 	    // Use the assignment reference to call methods, like this:
         System.out.println(assignment.isNumberSmallMediumOrBig(15));
+
+        ArrayList<Integer> newArray = new ArrayList<>();
+        newArray = assignment.findAllIntsBelowNumberInArray(new int[] {1,2,3,4,5,6,7,8,9}, 5);
+
+
     }
 }

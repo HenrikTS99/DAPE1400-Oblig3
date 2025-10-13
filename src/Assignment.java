@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Collections;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Assignment {
     // a) Metoder
@@ -8,7 +7,7 @@ public class Assignment {
      * Returns the sum of all the received numbers.
      */
     public int addThreeNumbers(int i, int j, int k) {
-        return 0;
+        return i + j + k;
     }
 
 
@@ -20,8 +19,14 @@ public class Assignment {
      * Medium (not small or big)
      */
     public String isNumberSmallMediumOrBig(int number){
-        return null;
+        if (number < 100) {
+            return "Small";
+        } else if (number > 1000) {
+            return "Big";
+        }
+        return "Medium";
     }
+
 
     // c) switch
     /**
@@ -33,7 +38,13 @@ public class Assignment {
      * or "Unknown" if none of the above.
      */
     public void printCourseName(String courseCode){
-
+        switch (courseCode) {
+            case ("ADTS1600") -> System.out.println("Interaksjonsdesign og Prototyping");
+            case ("DAPE1400") -> System.out.println("Programmering");
+            case ("DATA1200") -> System.out.println("Webutvikling og inkluderende design");
+            case ("DATA1100") -> System.out.println("Teknologi og samfunn for programmerere");
+            default -> System.out.println("Unknown");
+        };
     }
 
     // d) Strings
@@ -42,14 +53,14 @@ public class Assignment {
      * Color input is lowercase only.
      */
     public boolean isColorInNorwegianFlag(String color){
-        return false;
+        return Objects.equals(color, "blue") || Objects.equals(color, "red") || Objects.equals(color, "white");
     }
 
     /**
      * Returns the combined length of the provided Strings.
      */
     public int combinedLength(String s1, String s2){
-        return 0;
+        return s1.length() + s2.length();
     }
 
 
@@ -58,7 +69,7 @@ public class Assignment {
      * hint: https://www.w3schools.com/java/ref_string_length.asp
      */
     public Boolean checkIfStringIsWithinCorrectLength(String string, int maxChar, int minChar){
-        return false;
+        return string.length() <= maxChar && string.length() >= minChar;
     }
 
 
@@ -68,7 +79,9 @@ public class Assignment {
      * One String on each line.
      */
     public void printAllStrings(String[] strings){
-
+        for (String string : strings) {
+            System.out.println(string);
+        }
     }
 
 
@@ -76,7 +89,11 @@ public class Assignment {
      * Returns the sum of all numbers in received array.
      */
     public int arraySum(int[] numbers){
-        return 0;
+        int sum = 0;
+        for (int num = 0; num <= numbers.length; num++) {
+            sum += num;
+        }
+        return sum;
     }
 
     /**
@@ -85,7 +102,12 @@ public class Assignment {
      * But only if the String is not exactly "Corona".
      */
     public void printAllStringsNotCorona(String[] strings){
-
+        for (String string : strings) {
+            if (string.equals("Corona")) {
+                continue;
+            }
+            System.out.println(string);
+        }
     }
 
     // f) Collections
@@ -93,7 +115,20 @@ public class Assignment {
      * Finds all integers lower than a given number and stores these in an ArrayList
      */
     public ArrayList<Integer> findAllIntsBelowNumberInArray(int[] integerArray, int number) {
-        return null;
+        ArrayList<Integer> newArray = new ArrayList<>();
+        for (int num : integerArray){
+            if (num < number) {
+                newArray.add(num);
+            }
+        }
+
+        var res = Arrays.stream(integerArray)
+                .boxed()
+                .filter(i -> i< number)
+                .toList();
+
+        return new ArrayList<>(res);
+        //return newArray;
     }
 
     /**
@@ -125,7 +160,14 @@ public class Assignment {
      * Tips: google er din venn
      */
     public int firstOccurrence(String string, char c){
-        return 0;
+        char[] charArr = string.toCharArray();
+
+        for (int i = 0; i < charArr.length; i++) {
+            if (charArr[i] == c) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -133,7 +175,7 @@ public class Assignment {
      * hint: https://www.w3schools.com/java/ref_string_trim.asp
      */
     public String ensureOnlySingleSpaceAtEndOfString(String string){
-        return string;
+        return string.trim() + " ";
     }
 
     /**
@@ -145,7 +187,13 @@ public class Assignment {
      * Hint: Maybe its possible to reuse previous methods for this task?
      */
     public Boolean validateString(String string){
-        return false;
+        if ((string.length() - string.trim().length()) != 1) { return false; }
+
+        if (string.charAt(0) == ' ') { return false; }
+
+        if (string.length() < 6 || string.length() > 60) { return false; }
+
+        return true;
     }
 
 
@@ -154,7 +202,9 @@ public class Assignment {
      * One String on each line.
      */
     public void printUpperCaseStrings(String[] strings){
-
+        for (String string : strings) {
+            System.out.println(string.toUpperCase());
+        }
     }
 
     /**
@@ -163,7 +213,11 @@ public class Assignment {
      * Do not print in separate lines.
      */
     public void printFirstSentence(char[] chars) {
-
+        for (char c : chars) {
+            if (c == '.') {
+                return Arrays.copyOfRange(0, c+1).toString();
+            }
+        }
     }
     
     /**
