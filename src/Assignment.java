@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Assignment {
     // a) Metoder
@@ -89,11 +90,12 @@ public class Assignment {
      * Returns the sum of all numbers in received array.
      */
     public int arraySum(int[] numbers){
-        int sum = 0;
-        for (int num = 0; num <= numbers.length; num++) {
-            sum += num;
-        }
-        return sum;
+        //int sum = 0;
+        //for (int num : numbers) {
+        //    sum += num;
+        //}
+        //return sum;
+        return Arrays.stream(numbers).sum();
     }
 
     /**
@@ -136,7 +138,11 @@ public class Assignment {
      * in a hashmap and returns this HashMap
      */
     public HashMap<String, String> makeHashMapFromTwoArrays(String[] keyArray, String[] valueArray) {
-        return null;
+        HashMap<String, String> arrHashMap = new HashMap<>();
+        for (int i = 0; i < keyArray.length; i++) {
+            arrHashMap.put(keyArray[i], valueArray[i]);
+        }
+        return arrHashMap;
     }
 
     /**
@@ -146,7 +152,13 @@ public class Assignment {
      */
 
     public HashMap<String, Integer> findFrequencyOfElementsInArrayListOfStrings(ArrayList<String> stringList) {
-        return null;
+        HashMap<String, Integer> frequencyOfElement = new HashMap<>();
+        for (String string : stringList) {
+            // Hvis key allerede eksisterer, øker value med 1
+            // Hvis key ikke eksisterer, blir den laget og value satt til 0 + 1
+            frequencyOfElement.put(string, frequencyOfElement.getOrDefault(string, 0) + 1);
+        }
+        return frequencyOfElement;
     }
 
 
@@ -218,7 +230,7 @@ public class Assignment {
                 break;
             }
         }
-        System.out.println(firstSentence);
+        System.out.print(firstSentence);
     }
     
     /**
@@ -241,6 +253,11 @@ public class Assignment {
      * hint: this is called varargs
      */
     public int addNumbers(int... numbers){
-        return 0;
+        //int sum = 0;
+        //for (int num : numbers ){
+        //    sum += num;
+        //}
+        //return sum;
+        return Arrays.stream(numbers).sum();
     }
 }
