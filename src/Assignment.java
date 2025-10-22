@@ -1,6 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Assignment {
     // a) Metoder
@@ -45,7 +43,7 @@ public class Assignment {
             case ("DATA1200") -> System.out.println("Webutvikling og inkluderende design");
             case ("DATA1100") -> System.out.println("Teknologi og samfunn for programmerere");
             default -> System.out.println("Unknown");
-        };
+        }
     }
 
     // d) Strings
@@ -54,7 +52,7 @@ public class Assignment {
      * Color input is lowercase only.
      */
     public boolean isColorInNorwegianFlag(String color){
-        return Objects.equals(color, "blue") || Objects.equals(color, "red") || Objects.equals(color, "white");
+        return color.equals("blue") || color.equals("red") || color.equals("white");
     }
 
     /**
@@ -90,6 +88,7 @@ public class Assignment {
      * Returns the sum of all numbers in received array.
      */
     public int arraySum(int[] numbers){
+        // løste med streams, men kommenterte ut hvordan man kan løse med for loop
         //int sum = 0;
         //for (int num : numbers) {
         //    sum += num;
@@ -200,7 +199,7 @@ public class Assignment {
      */
     public Boolean validateString(String string){
         if ((string.length() - string.trim().length()) != 1) { return false; }
-
+        // kunne brukt firstOccurence
         if (string.charAt(0) == ' ') { return false; }
 
         return string.length() >= 6 && string.length() <= 60;
@@ -245,7 +244,6 @@ public class Assignment {
             }
             System.out.println(string);
         }
-
     }
 
     /**
@@ -253,11 +251,7 @@ public class Assignment {
      * hint: this is called varargs
      */
     public int addNumbers(int... numbers){
-        //int sum = 0;
-        //for (int num : numbers ){
-        //    sum += num;
-        //}
-        //return sum;
-        return Arrays.stream(numbers).sum();
+        //numbers er en int array;
+        return arraySum(numbers);
     }
 }
