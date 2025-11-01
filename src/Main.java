@@ -9,8 +9,7 @@ public class Main {
      */
     public static void main(String[] args) {
 	    Assignment assignment = new Assignment();
-	    // Use the assignment reference to call methods, like this:
-        System.out.println(assignment.isNumberSmallMediumOrBig(15));
+        // hvert mellomrom er testing av neste metode
 
         System.out.println("2+3+4= " + assignment.addThreeNumbers(2,3,4));
 
@@ -43,7 +42,8 @@ public class Main {
                 new String[] {"Value1", "Value2", "Value3"}
         ));
 
-        ArrayList<String> arrList = new ArrayList<>(Arrays.asList("1 element", "2 elements", "2 elements", "3 elements", "3 elements", "3 elements"));
+        ArrayList<String> arrList = new ArrayList<>(
+                Arrays.asList("1 element", "2 elements", "2 elements", "3 elements", "3 elements", "3 elements"));
         System.out.println(assignment.findFrequencyOfElementsInArrayListOfStrings(arrList));
 
         System.out.println("The first index of f is: " + assignment.firstOccurrence("The first index of f is", 'f'));

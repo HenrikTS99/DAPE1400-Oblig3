@@ -9,7 +9,6 @@ public class Assignment {
         return i + j + k;
     }
 
-
     // b) if else
     /**
      * Evaluates if the received number is
@@ -25,7 +24,6 @@ public class Assignment {
         }
         return "Medium";
     }
-
 
     // c) switch
     /**
@@ -62,7 +60,6 @@ public class Assignment {
         return s1.length() + s2.length();
     }
 
-
     /**
      * Return true if string is shorter than or equal to maxChar characters and longer then or equal to minChar characters.
      * hint: https://www.w3schools.com/java/ref_string_length.asp
@@ -70,7 +67,6 @@ public class Assignment {
     public Boolean checkIfStringIsWithinCorrectLength(String string, int maxChar, int minChar){
         return string.length() <= maxChar && string.length() >= minChar;
     }
-
 
     // e) Arrays
     /**
@@ -83,18 +79,17 @@ public class Assignment {
         }
     }
 
-
     /**
      * Returns the sum of all numbers in received array.
      */
     public int arraySum(int[] numbers){
-        // løste med streams, men kommenterte ut hvordan man kan løse med for loop
-        //int sum = 0;
-        //for (int num : numbers) {
-        //    sum += num;
-        //}
-        //return sum;
-        return Arrays.stream(numbers).sum();
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return sum;
+        // eventuell løsning med streams:
+        // return Arrays.stream(numbers).sum();
     }
 
     /**
@@ -104,10 +99,9 @@ public class Assignment {
      */
     public void printAllStringsNotCorona(String[] strings){
         for (String string : strings) {
-            if (string.equals("Corona")) {
-                continue;
+            if (!string.equals("Corona")) {
+                System.out.println(string);
             }
-            System.out.println(string);
         }
     }
 
@@ -122,14 +116,13 @@ public class Assignment {
                 newArray.add(num);
             }
         }
-
-        var res = Arrays.stream(integerArray)
-                .boxed()
-                .filter(i -> i< number)
-                .toList();
-
-        return new ArrayList<>(res);
-        //return newArray;
+        return newArray;
+        //Mulig løsning med streams
+        // return new ArrayList<>(
+        //        Arrays.stream(integerArray)
+        //                .boxed() // gjør hver primitiv int element til et Integer objekt
+        //                .filter(i -> i < number) // filtrerer alle tallene under number
+        //                .toList());
     }
 
     /**
@@ -149,21 +142,18 @@ public class Assignment {
      * and store the frequency of each element in the array as a key value pair in a HashMap
      * with the element as key and frequency as value
      */
-
     public HashMap<String, Integer> findFrequencyOfElementsInArrayListOfStrings(ArrayList<String> stringList) {
         HashMap<String, Integer> frequencyOfElement = new HashMap<>();
         for (String string : stringList) {
-            // Hvis key allerede eksisterer, øker value med 1
+            // Hvis key allerede eksisterer, øker value med 1 ( value + 1)
             // Hvis key ikke eksisterer, blir den laget og value satt til 0 + 1
             frequencyOfElement.put(string, frequencyOfElement.getOrDefault(string, 0) + 1);
         }
         return frequencyOfElement;
     }
 
-
     // The following methods are Optional assignments:
     // additional optional assignments might be added later.
-
 
     /**
      * Returns the index of the first occurrence of char c in String string.
@@ -171,14 +161,14 @@ public class Assignment {
      * Tips: google er din venn
      */
     public int firstOccurrence(String string, char c){
-        char[] charArr = string.toCharArray();
-
-        for (int i = 0; i < charArr.length; i++) {
-            if (charArr[i] == c) {
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == c) {
                 return i;
             }
         }
         return -1;
+        // løsning uten for loop:
+        // return string.indexOf(c);
     }
 
     /**
@@ -199,12 +189,10 @@ public class Assignment {
      */
     public Boolean validateString(String string){
         if ((string.length() - string.trim().length()) != 1) { return false; }
-        // kunne brukt firstOccurence
+        // kunne brukt firstOccurence istedetfor charAt metoden: firstOccurence(string, ' ') == 0
         if (string.charAt(0) == ' ') { return false; }
-
-        return string.length() >= 6 && string.length() <= 60;
+        return checkIfStringIsWithinCorrectLength(string, 60, 6);
     }
-
 
     /**
      * Prints the provided strings in upper case letters.
@@ -222,6 +210,7 @@ public class Assignment {
      * Do not print in separate lines.
      */
     public void printFirstSentence(char[] chars) {
+        // Stringbuilder så jeg kan legge til bokstaver og bygge opp setningen
         StringBuilder firstSentence = new StringBuilder();
         for (char c : chars) {
             firstSentence.append(c);
@@ -231,7 +220,7 @@ public class Assignment {
         }
         System.out.print(firstSentence);
     }
-    
+
     /**
      * Prints all Strings in received array to standard output.
      * One String on each line.
@@ -239,10 +228,9 @@ public class Assignment {
      */
     public void printAllStringsNotCoronaCaseInsensitive(String[] strings){
         for (String string : strings) {
-            if (string.equalsIgnoreCase("Corona")) {
-                continue;
+            if (!string.equalsIgnoreCase("Corona")) {
+                System.out.println(string);
             }
-            System.out.println(string);
         }
     }
 
